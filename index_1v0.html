@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Green</title>
+
+		<script src="./javascripts/vue.min.js"></script>
+
+		<link rel="stylesheet" href="./stylesheets/bootstrap.min.css" />
+		<link rel="stylesheet" href="./stylesheets/style.css" />
+	</head>
+	<body>
+		<div id="app" class="container">
+			<h1>{{title}}</h1>
+			<!--
+              x:
+                lon 9.9281826,
+                lon 17.1884738,
+                width : 8
+                y:
+                lat 49.3857256
+                lat 46.5484077
+                height: 3
+      
+             -->
+			<svg viewBox="8.7 45.5 9 4">
+                 <image :x="sx" :y="sy" 
+                 :width="w" :height="h" 
+                 href="./images/österreich_karte_zugeschnitten.svg" />
+
+					<g v-for="c of cities">
+						<circle :cx="c.coord.lon" :cy="c.coord.lat | flipY" r="0.03" />
+						<text :x="c.coord.lon" :y="c.coord.lat | flipY" style="font-size: 0.3">{{c.name}}</text>
+					</g>
+				<!-- </g> -->
+			</svg>
+
+            <input type="range" min="-51" max="28" step="0.01" v-model="sx">{{sx}}
+            <input type="range" min="16" max="50" step="0.01" v-model="sy">{{sy}}
+            <input type="range" min="8" max="40" step="0.01" v-model="w">{{w}}
+            <input type="range" min="1" max="8" step="0.01" v-model="h">{{h}}
+		</div>
+		<script src="./javascripts/app.js"></script>
+	</body>
+</html>

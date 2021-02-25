@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Green</title>
+
+		<script src="./javascripts/vue.min.js"></script>
+
+		<link rel="stylesheet" href="./stylesheets/bootstrap.min.css" />
+		<link rel="stylesheet" href="./stylesheets/style.css" />
+	</head>
+	<body>
+		<div id="app" class="container">
+			<h1>{{title}}</h1>
+			<!--
+              x:
+                lon 9.9281826,
+                lon 17.1884738,
+                width : 8
+                y:
+                lat 49.3857256
+                lat 46.5484077
+                height: 3
+      
+             -->
+
+			<svg viewBox="0 0 297 210">
+				<g transform="scale(1,1.1)">
+				<image x="0" y="0" width="297" height="210" href="./images/ÖsterreichSelbst_v2_clean.svg" />
+				<g transform="translate(0,-87)">
+					<g v-for="c of cities">
+						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" />
+						<text :x="c.coord.x+3" :y="c.coord.y " style="font-size: 5">{{c.name}}</text>
+					</g>
+				</g>
+				</g>
+
+			</svg>
+		</div>
+		<script src="./javascripts/data_1v1.js"></script>
+		<script src="./javascripts/app_1v1.js"></script>
+	</body>
+</html>
