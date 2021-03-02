@@ -19,6 +19,9 @@ const vm = new Vue({
         city.isSelected = false;
         this.selectedCities = this.selectedCities.filter((e) => e.id != id);
       }
+      if (this.selectedCities.length == 2) {
+        this.drawRoute();
+      }
       // console.log(this.selectedCities);
     },
 
