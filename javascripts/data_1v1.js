@@ -40,6 +40,8 @@ const data = {
       coord: {
         lat: 47.50311,
         lon: 9.7471,
+        x: 38.085907,
+        y: 187.56543,
       },
       link: "https://www.bregenz.at/home/",
     },
@@ -49,6 +51,8 @@ const data = {
       coord: {
         lat: 47.79941,
         lon: 13.04399,
+        x: 140.04018,
+        y: 172.36235,
       },
       link: "https://www.stadt-salzburg.at/home/?no_cache=1",
     },
@@ -58,6 +62,8 @@ const data = {
       coord: {
         lat: 46.61028,
         lon: 13.85583,
+        x: 165.76761,
+        y: 227.86893,
       },
       link: "https://de.wikipedia.org/wiki/Villach",
     },
@@ -67,6 +73,8 @@ const data = {
       coord: {
         lat: 46.62472,
         lon: 14.30528,
+        x: 180.03477,
+        y: 227.31064,
       },
       link: "https://www.klagenfurt.at/",
     },
@@ -76,6 +84,8 @@ const data = {
       coord: {
         lat: 47.06667,
         lon: 15.45,
+        x: 215.25743,
+        y: 208.05748,
       },
       link: "https://www.graz.at/",
     },
@@ -85,6 +95,8 @@ const data = {
       coord: {
         lat: 47.44458,
         lon: 15.29331,
+        x: 213.90904,
+        y: 189.56976,
       },
       link: "https://www.kapfenberg.gv.at/",
     },
@@ -94,6 +106,8 @@ const data = {
       coord: {
         lat: 47.84565,
         lon: 16.52327,
+        x: 245.22879,
+        y: 172.65289,
       },
       link: "https://www.eisenstadt.gv.at/",
     },
