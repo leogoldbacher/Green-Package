@@ -5,7 +5,24 @@ const vm = new Vue({
     title: "Green Package",
     routes: data.routes,
     cities: data.cities,
+    selectedCities: [],
   },
-  methods: {},
+  methods: {
+    selectCity(id) {
+      // Methode um Städte auszuwählen
+      // console.log(this.cities.find((e) => e.id == id));
+      let city = this.cities.find((e) => e.id == id);
+      if (city.isSelected == false) {
+        city.isSelected = true;
+        this.selectedCities.push(city);
+      } else {
+        city.isSelected = false;
+        this.selectedCities = this.selectedCities.filter((e) => e.id != id);
+      }
+      // console.log(this.selectedCities);
+    },
+
+    drawRoute() {},
+  },
   created() {},
 });

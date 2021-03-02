@@ -30,7 +30,8 @@
 				<image x="0" y="0" width="297" height="210" href="./images/ÖsterreichSelbst_v2_clean.svg" />
 				<g transform="translate(0,-87)">
 					<g v-for="c of cities">
-						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" />
+						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-if="c.isSelected == false"/>
+						<circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)" v-if="c.isSelected"/>
 						<text :x="c.coord.x+3" :y="c.coord.y " style="font-size: 5">{{c.name}}</text>
 					</g>
 				</g>

@@ -3,6 +3,7 @@ const data = {
     {
       id: "W",
       name: "Wien",
+      isSelected: false,
       coord: {
         lat: 48.20849,
         lon: 16.37208,
@@ -14,6 +15,7 @@ const data = {
     {
       id: "L",
       name: "Linz",
+      isSelected: false,
       coord: {
         lat: 48.30639,
         lon: 14.28611,
@@ -26,6 +28,7 @@ const data = {
     {
       id: "I",
       name: "Innsbruck",
+      isSelected: false,
       coord: {
         lat: 47.26266,
         lon: 11.39454,
@@ -37,6 +40,7 @@ const data = {
     {
       id: "B",
       name: "Bregenz",
+      isSelected: false,
       coord: {
         lat: 47.50311,
         lon: 9.7471,
@@ -48,6 +52,7 @@ const data = {
     {
       id: "S",
       name: "Salzburg",
+      isSelected: false,
       coord: {
         lat: 47.79941,
         lon: 13.04399,
@@ -59,6 +64,7 @@ const data = {
     {
       id: "V",
       name: "Villach",
+      isSelected: false,
       coord: {
         lat: 46.61028,
         lon: 13.85583,
@@ -70,6 +76,7 @@ const data = {
     {
       id: "K",
       name: "Klagenfurt",
+      isSelected: false,
       coord: {
         lat: 46.62472,
         lon: 14.30528,
@@ -81,6 +88,7 @@ const data = {
     {
       id: "G",
       name: "Graz",
+      isSelected: false,
       coord: {
         lat: 47.06667,
         lon: 15.45,
@@ -92,6 +100,7 @@ const data = {
     {
       id: "Ka",
       name: "Kapfenberg",
+      isSelected: false,
       coord: {
         lat: 47.44458,
         lon: 15.29331,
@@ -103,6 +112,7 @@ const data = {
     {
       id: "E",
       name: "Eisenstadt",
+      isSelected: false,
       coord: {
         lat: 47.84565,
         lon: 16.52327,
