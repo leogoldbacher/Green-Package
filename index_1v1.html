@@ -31,7 +31,7 @@
 				<g transform="translate(0,-87)">
 
 					<g v-for="c of cities">
-						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-if="c.isSelected == false"/>
+						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-on:dblclick="doubleClick(c.id)" v-if="c.isSelected == false"/>
 						<circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)" v-if="c.isSelected"/>
 						<text :x="c.coord.x+3" :y="c.coord.y " style="font-size: 5">{{c.name}}</text>
 

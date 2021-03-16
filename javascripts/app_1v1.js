@@ -11,19 +11,24 @@ const vm = new Vue({
   methods: {
     selectCity(id) {
       // Methode um Städte auszuwählen
-      // console.log(this.cities.find((e) => e.id == id));
       let city = this.cities.find((e) => e.id == id);
       if (city.isSelected == false) {
         city.isSelected = true;
-        this.selectedCities.push(city);
+        if (this.selectedCities.length == 2) {
+          console.log("2 sind schon ausgewählt");
+          city.isSelected = false;
+        } else if (this.selectedCities.length < 2) {
+          this.selectedCities.push(city);
+        }
       } else {
         city.isSelected = false;
         this.selectedCities = this.selectedCities.filter((e) => e.id != id);
+        this.lines = [];
       }
       if (this.selectedCities.length == 2) {
         this.drawRoute();
       }
-      // console.log(this.selectedCities);
+      console.log(this.selectedCities);
     },
 
     drawRoute() {
@@ -41,6 +46,10 @@ const vm = new Vue({
       //   newRoute.setAttribute("x1", this.selectedCities[1].coord.x);
       //   newRoute.setAttribute("y1", this.selectedCities[1].coord.y);
       //   newRoute.setAttribute("stroke", "black");
+    },
+    doubleClick() {
+      // Wenn doubleClick auf eine nicht markierte stadt gemacht wird dann werden alle demakiert bis auf die geclickte
+      console.log("juhu");
     },
   },
   created() {},
