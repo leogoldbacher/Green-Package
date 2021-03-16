@@ -6,6 +6,7 @@ const vm = new Vue({
     routes: data.routes,
     cities: data.cities,
     selectedCities: [],
+    lines: [],
   },
   methods: {
     selectCity(id) {
@@ -25,7 +26,22 @@ const vm = new Vue({
       // console.log(this.selectedCities);
     },
 
-    drawRoute() {},
+    drawRoute() {
+      const c1 = this.selectedCities[0].coord;
+      const c2 = this.selectedCities[1].coord;
+      this.lines = [];
+      this.lines.push({ x1: c1.x, y1: c1.y, x2: c2.x, y2: c2.y });
+
+      //   let newRoute = document.createElementNS(
+      //     "http://www.w3.org/2000/svg",
+      //     "line"
+      //   );
+      //   newRoute.setAttribute("x1", this.selectedCities[0].coord.x);
+      //   newRoute.setAttribute("y1", this.selectedCities[0].coord.y);
+      //   newRoute.setAttribute("x1", this.selectedCities[1].coord.x);
+      //   newRoute.setAttribute("y1", this.selectedCities[1].coord.y);
+      //   newRoute.setAttribute("stroke", "black");
+    },
   },
   created() {},
 });

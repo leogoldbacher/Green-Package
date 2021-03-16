@@ -71,7 +71,7 @@ const data = {
         x: 165.76761,
         y: 227.86893,
       },
-      link: "https://de.wikipedia.org/wiki/Villach",
+      link: "https://villach.at/",
     },
     {
       id: "K",
