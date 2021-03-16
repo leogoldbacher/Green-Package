@@ -28,7 +28,7 @@ const vm = new Vue({
       if (this.selectedCities.length == 2) {
         this.drawRoute();
       }
-      console.log(this.selectedCities);
+      // console.log(this.selectedCities);
     },
 
     drawRoute() {
@@ -47,9 +47,20 @@ const vm = new Vue({
       //   newRoute.setAttribute("y1", this.selectedCities[1].coord.y);
       //   newRoute.setAttribute("stroke", "black");
     },
-    doubleClick() {
+
+    doubleClick(id) {
       // Wenn doubleClick auf eine nicht markierte stadt gemacht wird dann werden alle demakiert bis auf die geclickte
-      console.log("juhu");
+      // console.log("juhu");
+      // console.log(this.selectedCities);
+      let cityDouble = this.cities.find((e) => e.id == id);
+      for (let c of this.cities) {
+        c.isSelected = false;
+        this.lines = [];
+        this.selectedCities = [];
+      }
+      cityDouble.isSelected = true;
+      this.selectedCities.push(cityDouble);
+      // console.log(this.selectedCities);
     },
   },
   created() {},
