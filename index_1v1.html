@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Green</title>
 
-		<script src="./javascripts/vue.min.js"></script>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Green</title>
 
-		<link rel="stylesheet" href="./stylesheets/bootstrap.min.css" />
-		<link rel="stylesheet" href="./stylesheets/style.css" />
-	</head>
-	<body>
-		<div id="app" class="container">
-			<h1>{{title}}</h1>
-			<!--
+	<script src="./javascripts/vue.min.js"></script>
+
+	<link rel="stylesheet" href="./stylesheets/bootstrap.min.css" />
+	<link rel="stylesheet" href="./stylesheets/style.css" />
+</head>
+
+<body>
+	<div id="app" class="container">
+		<h1>{{title}}</h1>
+		<!--
               x:
                 lon 9.9281826,
                 lon 17.1884738,
@@ -25,14 +27,16 @@
       
              -->
 
-			<svg viewBox="0 0 297 210">
-				<g transform="scale(1,1.1)">
+		<svg viewBox="0 0 297 210">
+			<g transform="scale(1,1.1)">
 				<image x="0" y="0" width="297" height="210" href="./images/ÖsterreichSelbst_v2_clean.svg" />
 				<g transform="translate(0,-87)">
 
 					<g v-for="c of cities">
-						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-on:dblclick="doubleClick(c.id)" v-if="c.isSelected == false"/>
-						<circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)" v-if="c.isSelected"/>
+						<circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)"
+							v-on:dblclick="doubleClick(c.id)" v-if="c.isSelected == false" />
+						<circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)"
+							v-if="c.isSelected" />
 						<text :x="c.coord.x+3" :y="c.coord.y " style="font-size: 5">{{c.name}}</text>
 
 					</g>
@@ -40,11 +44,27 @@
 						<line v-for="l of lines" :x1="l.x1" :x2="l.x2" :y1="l.y1" :y2="l.y2" stroke="black"></line>
 					</g>
 				</g>
-				</g>
+			</g>
 
-			</svg>
+		</svg>
+		<div class="row">
+			<div class="col-xs-6">
+				<h2>Städte</h2>
+				<ul v-for="c of this.cities" v-if="c.isSelected">
+					<li><a :href="c.link">{{c.name}}</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-6">
+				<h2>Route</h2>
+				<ul v-if="this.selectedCities.length == 2"> 
+					<li>{{this.routes.find(e=> e.c1 == this.selectedCities[0].id && e.c2 == this.selectedCities[1].id || e.c2 == this.selectedCities[0].id && e.c1 == this.selectedCities[1].id).costs[0]}}</li>
+					<li>{{this.routes.find(e=> e.c1 == this.selectedCities[0].id && e.c2 == this.selectedCities[1].id || e.c2 == this.selectedCities[0].id && e.c1 == this.selectedCities[1].id).costs[1]}}</li>
+				</ul>
+			</div>
 		</div>
-		<script src="./javascripts/data_1v1.js"></script>
-		<script src="./javascripts/app_1v1.js"></script>
-	</body>
+	</div>
+	<script src="./javascripts/data_1v1.js"></script>
+	<script src="./javascripts/app_1v1.js"></script>
+</body>
+
 </html>
