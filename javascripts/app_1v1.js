@@ -6,7 +6,6 @@ const vm = new Vue({
     routes: data.routes,
     cities: data.cities,
     selectedCities: [],
-
     lines: [],
   },
   computed: {
@@ -27,7 +26,6 @@ const vm = new Vue({
       if (city.isSelected == false) {
         city.isSelected = true;
         if (this.selectedCities.length == 2) {
-          console.log("2 sind schon ausgewählt");
           city.isSelected = false;
         } else if (this.selectedCities.length < 2) {
           this.selectedCities.push(city);
@@ -37,7 +35,6 @@ const vm = new Vue({
         this.selectedCities = this.selectedCities.filter((e) => e.id != id);
         this.lines = [];
       }
-      console.log(this.selectedCities);
       if (this.selectedCities.length == 2) {
         this.drawRoute();
       }

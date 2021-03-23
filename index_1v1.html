@@ -76,10 +76,11 @@
           <h3 class="text-center">Stadt 1</h3>
           <span v-if="selectedCities[0] != null">
             <span class="text-center">
+              <a :href="selectedCities[0].link">
               {{selectedCities[0].name}}<img
                 :src="selectedCities[0].wappen"
                 style="height: 5vh"
-              /> </span
+              /></a> </span
             ><br />
             <span class="text-center"
               ><a :href="selectedCities[0].link"
@@ -91,12 +92,12 @@
         <div class="col-6">
           <h3 class="text-center">Routen</h3>
           <span class="text-center" v-if="selectedCities.length == 2"
-            >Auto: <span class="mdi mdi-car-outline"></span> Emission:
+            ><span class="mdi mdi-car-outline"></span> Emission:
             {{selectedRoute.costs[0].emission}} Duration:
             {{selectedRoute.costs[0].duration}}</span
           ><br />
           <span v-if="selectedCities.length == 2" class="text-center"
-            >Zug: <span class="mdi mdi-train"></span> Emission:
+            ><span class="mdi mdi-train"></span> Emission:
             {{selectedRoute.costs[1].emission}} Duration:
             {{selectedRoute.costs[1].duration}}</span
           >
@@ -105,12 +106,12 @@
           <h3 class="text-center">Stadt 2</h3>
           <span v-if="selectedCities[1] != null">
             <span class="text-center"
-              >Stadt: {{selectedCities[1].name}}<img
+              ><a :href="selectedCities[1].link">{{selectedCities[1].name}}<img
                 :src="selectedCities[1].wappen"
-                style="height: 5vh" /></span
+                style="height: 5vh" /></a></span
             ><br />
             <span class="text-center"
-              >Webseite:
+              >
               <a :href="selectedCities[1].link"
                 >{{selectedCities[1].link}}</a
               ></span
