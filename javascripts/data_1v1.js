@@ -49,7 +49,7 @@ const data = {
         x: 38.085907,
         y: 187.56543,
       },
-      link: "https://www.bregenz.at/home/",
+      link: "https://www.bregenz.at",
       wappen: "../images/wappen/bregenz.png"
     },
     {

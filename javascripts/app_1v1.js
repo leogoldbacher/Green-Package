@@ -10,7 +10,13 @@ const vm = new Vue({
   },
   computed: {
     selectedRoute() {
-      return this.findRoute() ;
+      return this.findRoute();
+    },
+    co2Vergleich(){
+      return (this.selectedRoute.costs[0].emission/this.selectedRoute.costs[1].emission).toFixed(2);
+    },
+    dauerVergleich(){
+      return (this.selectedRoute.costs[0].duration/this.selectedRoute.costs[1].duration).toFixed(2);
     }
   },
   methods: {
