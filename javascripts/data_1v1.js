@@ -11,6 +11,7 @@ const data = {
         y: 155.3298,
       },
       link: "https://www.wien.at/",
+      wappen: "../images/wappen/wien.png",
     },
     {
       id: "L",
@@ -22,8 +23,8 @@ const data = {
         x: 179.01,
         y: 150.44,
       },
-
       link: "https://www.linz.at/",
+      wappen: "../images/wappen/linz.png"
     },
     {
       id: "I",
@@ -36,6 +37,7 @@ const data = {
         y: 198.44272,
       },
       link: "https://www.innsbruck.at/",
+      wappen: "../images/wappen/innsbruck.png"
     },
     {
       id: "B",
@@ -48,6 +50,7 @@ const data = {
         y: 187.56543,
       },
       link: "https://www.bregenz.at/home/",
+      wappen: "../images/wappen/bregenz.png"
     },
     {
       id: "S",
@@ -59,7 +62,8 @@ const data = {
         x: 140.04018,
         y: 172.36235,
       },
-      link: "https://www.stadt-salzburg.at/home/?no_cache=1",
+      link: "https://www.stadt-salzburg.at",
+      wappen: "../images/wappen/salzburg.png",
     },
     {
       id: "V",
@@ -72,6 +76,7 @@ const data = {
         y: 227.86893,
       },
       link: "https://villach.at/",
+      wappen: "../images/wappen/villach.png"
     },
     {
       id: "K",
@@ -84,6 +89,7 @@ const data = {
         y: 227.31064,
       },
       link: "https://www.klagenfurt.at/",
+      wappen: "../images/wappen/klagenfurt.png"
     },
     {
       id: "G",
@@ -96,6 +102,7 @@ const data = {
         y: 208.05748,
       },
       link: "https://www.graz.at/",
+      wappen: "../images/wappen/graz.png"
     },
     {
       id: "Ka",
@@ -108,6 +115,7 @@ const data = {
         y: 189.56976,
       },
       link: "https://www.kapfenberg.gv.at/",
+      wappen: "../images/wappen/kapfenberg.png"
     },
     {
       id: "E",
@@ -120,6 +128,7 @@ const data = {
         y: 172.65289,
       },
       link: "https://www.eisenstadt.gv.at/",
+      wappen: "../images/wappen/eisenstadt.png"
     },
   ],
   routes: [

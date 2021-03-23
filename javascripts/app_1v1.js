@@ -6,9 +6,21 @@ const vm = new Vue({
     routes: data.routes,
     cities: data.cities,
     selectedCities: [],
+
     lines: [],
   },
+  computed: {
+    selectedRoute() {
+      return this.findRoute() ;
+    }
+  },
   methods: {
+    findRoute() {
+      return this.routes.find(e => e.c1 ==
+        this.selectedCities[0].id && e.c2 == this.selectedCities[1].id 
+        || e.c2 == this.selectedCities[0].id
+        && e.c1 == this.selectedCities[1].id);
+    },
     selectCity(id) {
       // Methode um Städte auszuwählen
       let city = this.cities.find((e) => e.id == id);
@@ -25,9 +37,11 @@ const vm = new Vue({
         this.selectedCities = this.selectedCities.filter((e) => e.id != id);
         this.lines = [];
       }
+      console.log(this.selectedCities);
       if (this.selectedCities.length == 2) {
         this.drawRoute();
       }
+      this.westlichsteSelectedCity();
       // console.log(this.selectedCities);
     },
 
@@ -62,6 +76,14 @@ const vm = new Vue({
       this.selectedCities.push(cityDouble);
       // console.log(this.selectedCities);
     },
+    westlichsteSelectedCity(){
+      if(this.selectedCities.length != 2) return;
+      if(this.selectedCities[0].coord.lon > this.selectedCities[1].coord.lon){
+        const h = this.selectedCities[0];
+        this.selectedCities[0] = this.selectedCities[1];
+        this.selectedCities[1] = h;
+      }
+    }
   },
   created() {},
 });
