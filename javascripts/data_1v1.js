@@ -24,7 +24,7 @@ const data = {
         y: 150.44,
       },
       link: "https://www.linz.at/",
-      wappen: "../images/wappen/linz.png"
+      wappen: "../images/wappen/linz.png",
     },
     {
       id: "I",
@@ -37,7 +37,7 @@ const data = {
         y: 198.44272,
       },
       link: "https://www.innsbruck.at/",
-      wappen: "../images/wappen/innsbruck.png"
+      wappen: "../images/wappen/innsbruck.png",
     },
     {
       id: "B",
@@ -50,7 +50,7 @@ const data = {
         y: 187.56543,
       },
       link: "https://www.bregenz.at",
-      wappen: "../images/wappen/bregenz.png"
+      wappen: "../images/wappen/bregenz.png",
     },
     {
       id: "S",
@@ -76,7 +76,7 @@ const data = {
         y: 227.86893,
       },
       link: "https://villach.at/",
-      wappen: "../images/wappen/villach.png"
+      wappen: "../images/wappen/villach.png",
     },
     {
       id: "K",
@@ -89,7 +89,7 @@ const data = {
         y: 227.31064,
       },
       link: "https://www.klagenfurt.at/",
-      wappen: "../images/wappen/klagenfurt.png"
+      wappen: "../images/wappen/klagenfurt.png",
     },
     {
       id: "G",
@@ -102,7 +102,7 @@ const data = {
         y: 208.05748,
       },
       link: "https://www.graz.at/",
-      wappen: "../images/wappen/graz.png"
+      wappen: "../images/wappen/graz.png",
     },
     {
       id: "Ka",
@@ -115,7 +115,7 @@ const data = {
         y: 189.56976,
       },
       link: "https://www.kapfenberg.gv.at/",
-      wappen: "../images/wappen/kapfenberg.png"
+      wappen: "../images/wappen/kapfenberg.png",
     },
     {
       id: "E",
@@ -128,201 +128,153 @@ const data = {
         y: 172.65289,
       },
       link: "https://www.eisenstadt.gv.at/",
-      wappen: "../images/wappen/eisenstadt.png"
+      wappen: "../images/wappen/eisenstadt.png",
     },
   ],
   routes: [
     {
-      c1: "L",
-      c2: "W",
-      costs: [
-        {
-          type: "car",
-          emission: 34.96,
-          duration: 128,
-        },
-        {
-          type: "train",
-          emission: 5.88,
-          duration: 74,
-        },
-      ],
+      c: ["L", "W"],
+      type: "car",
+      emission: 34.96,
+      duration: 128,
     },
     {
-      c1: "W",
-      c2: "E",
-      costs: [
-        {
-          type: "car",
-          emission: 9.5,
-          duration: 49,
-        },
-        {
-          type: "train",
-          emission: 1.6,
-          duration: 71,
-        },
-      ],
+      c: ["L", "W"],
+      type: "train",
+      emission: 5.88,
+      duration: 74,
     },
     {
-      c1: "E",
-      c2: "Ka",
-      costs: [
-        {
-          type: "car",
-          emission: 22.99,
-          duration: 84,
-        },
-        {
-          type: "train",
-          emission: 3.872,
-          duration: 146,
-        },
-      ],
+      c: ["E", "W"],
+      type: "car",
+      emission: 9.5,
+      duration: 49,
     },
     {
-      c1: "L",
-      c2: "Ka",
-      costs: [
-        {
-          type: "car",
-          emission: 39.52,
-          duration: 144,
-        },
-        {
-          type: "train",
-          emission: 6.656,
-          duration: 196,
-        },
-      ],
+      c: ["E", "W"],
+      type: "train",
+      emission: 1.6,
+      duration: 71,
     },
     {
-      c1: "Ka",
-      c2: "G",
-      costs: [
-        {
-          type: "car",
-          emission: 11.875,
-          duration: 59,
-        },
-        {
-          type: "train",
-          emission: 2,
-          duration: 42,
-        },
-      ],
+      c: ["E", "Ka"],
+      type: "car",
+      emission: 22.99,
+      duration: 84,
     },
     {
-      c1: "G",
-      c2: "K",
-      costs: [
-        {
-          type: "car",
-          emission: 26.41,
-          duration: 102,
-        },
-        {
-          type: "train",
-          emission: 4.448,
-          duration: 120,
-        },
-      ],
+      c: ["E", "Ka"],
+      type: "train",
+      emission: 3.872,
+      duration: 146,
     },
     {
-      c1: "K",
-      c2: "V",
-      costs: [
-        {
-          type: "car",
-          emission: 7.505,
-          duration: 43,
-        },
-        {
-          type: "train",
-          emission: 1.264,
-          duration: 37,
-        },
-      ],
+      c: ["L", "Ka"],
+      type: "car",
+      emission: 39.52,
+      duration: 144,
     },
     {
-      c1: "V",
-      c2: "S",
-      costs: [
-        {
-          type: "car",
-          emission: 36.67,
-          duration: 132,
-        },
-        {
-          type: "train",
-          emission: 6.176,
-          duration: 187,
-        },
-      ],
+      c: ["L", "Ka"],
+      type: "train",
+      emission: 6.656,
+      duration: 196,
     },
     {
-      c1: "V",
-      c2: "I",
-      costs: [
-        {
-          type: "car",
-          emission: 56.24,
-          duration: 256,
-        },
-        {
-          type: "train",
-          emission: 9.472,
-          duration: 264,
-        },
-      ],
+      c: ["G", "Ka"],
+      type: "car",
+      emission: 11.875,
+      duration: 59,
     },
     {
-      c1: "S",
-      c2: "I",
-      costs: [
-        {
-          type: "car",
-          emission: 31.16,
-          duration: 143,
-        },
-        {
-          type: "train",
-          emission: 5.248,
-          duration: 108,
-        },
-      ],
+      c: ["G", "Ka"],
+      type: "train",
+      emission: 2,
+      duration: 42,
     },
     {
-      c1: "S",
-      c2: "L",
-      costs: [
-        {
-          type: "car",
-          emission: 31.16,
-          duration: 143,
-        },
-        {
-          type: "train",
-          emission: 5.248,
-          duration: 66,
-        },
-      ],
+      c: ["G", "K"],
+      type: "car",
+      emission: 26.41,
+      duration: 102,
     },
     {
-      c1: "I",
-      c2: "B",
-      costs: [
-        {
-          type: "car",
-          emission: 38.76,
-          duration: 178,
-        },
-        {
-          type: "train",
-          emission: 6.528,
-          duration: 150,
-        },
-      ],
+      c: ["G", "K"],
+      type: "train",
+      emission: 4.448,
+      duration: 120,
+    },
+    {
+      c: ["V", "K"],
+      type: "car",
+      emission: 7.505,
+      duration: 43,
+    },
+    {
+      c: ["V", "K"],
+      type: "train",
+      emission: 1.264,
+      duration: 37,
+    },
+    {
+      c: ["V", "S"],
+      type: "car",
+      emission: 36.67,
+      duration: 132,
+    },
+    {
+      c: ["V", "S"],
+      type: "train",
+      emission: 6.176,
+      duration: 187,
+    },
+    {
+      c: ["V", "I"],
+      type: "car",
+      emission: 56.24,
+      duration: 256,
+    },
+    {
+      c: ["V", "I"],
+      type: "train",
+      emission: 9.472,
+      duration: 264,
+    },
+    {
+      c: ["S", "I"],
+      type: "car",
+      emission: 31.16,
+      duration: 143,
+    },
+    {
+      c: ["S", "I"],
+      type: "train",
+      emission: 5.248,
+      duration: 108,
+    },
+    {
+      c: ["S", "L"],
+      type: "car",
+      emission: 31.16,
+      duration: 143,
+    },
+    {
+      c: ["S", "L"],
+      type: "train",
+      emission: 5.248,
+      duration: 66,
+    },
+    {
+      c: ["I", "B"],
+      type: "car",
+      emission: 38.76,
+      duration: 178,
+    },
+    {
+      c: ["I", "B"],
+      type: "train",
+      emission: 6.528,
+      duration: 150,
     },
   ],
 };
