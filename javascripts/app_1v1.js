@@ -12,19 +12,26 @@ const vm = new Vue({
     selectedRoute() {
       return this.findRoute();
     },
-    co2Vergleich(){
-      return (this.selectedRoute.costs[0].emission/this.selectedRoute.costs[1].emission).toFixed(2);
+    co2Vergleich() {
+      return (
+        this.selectedRoute.costs[0].emission /
+        this.selectedRoute.costs[1].emission
+      ).toFixed(2);
     },
-    dauerVergleich(){
-      return (this.selectedRoute.costs[0].duration/this.selectedRoute.costs[1].duration).toFixed(2);
-    }
+    dauerVergleich() {
+      return (
+        this.selectedRoute.costs[0].duration /
+        this.selectedRoute.costs[1].duration
+      ).toFixed(2);
+    },
   },
   methods: {
     findRoute() {
-      return this.routes.find(e => e.c1 ==
-        this.selectedCities[0].id && e.c2 == this.selectedCities[1].id 
-        || e.c2 == this.selectedCities[0].id
-        && e.c1 == this.selectedCities[1].id);
+      return this.routes.find(
+        (e) =>
+          e.c.includes(this.selectedCities[0].id) &&
+          e.c.includes(this.selectedCities[1].id)
+      );
     },
     selectCity(id) {
       // Methode um Städte auszuwählen
@@ -79,14 +86,14 @@ const vm = new Vue({
       this.selectedCities.push(cityDouble);
       // console.log(this.selectedCities);
     },
-    westlichsteSelectedCity(){
-      if(this.selectedCities.length != 2) return;
-      if(this.selectedCities[0].coord.lon > this.selectedCities[1].coord.lon){
+    westlichsteSelectedCity() {
+      if (this.selectedCities.length != 2) return;
+      if (this.selectedCities[0].coord.lon > this.selectedCities[1].coord.lon) {
         const h = this.selectedCities[0];
         this.selectedCities[0] = this.selectedCities[1];
         this.selectedCities[1] = h;
       }
-    }
+    },
   },
   created() {},
 });
