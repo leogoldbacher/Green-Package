@@ -144,135 +144,147 @@ const data = {
   routes: [
     {
       c: ["L", "W"],
-      costs: [
-        {
-          type: "car",
-          emission: 34.96,
-          duration: 128,
-        },
-        { type: "train", emission: 5.88, duration: 74 },
-      ],
+      type: "car",
+      emission: 34.96,
+      duration: 128,
+    },
+    {
+      c: ["L", "W"],
+      type: "train",
+      emission: 5.88,
+      duration: 74,
     },
     {
       c: ["E", "W"],
-      costs: [
-        {
-          type: "car",
-          emission: 9.5,
-          duration: 49,
-        },
-        { type: "train", emission: 1.6, duration: 71 },
-      ],
+      type: "car",
+      emission: 9.5,
+      duration: 49,
+    },
+    {
+      c: ["E", "W"],
+      type: "train",
+      emission: 1.6,
+      duration: 71,
     },
     {
       c: ["E", "Ka"],
-      costs: [
-        {
-          type: "car",
-          emission: 22.99,
-          duration: 84,
-        },
-        { type: "train", emission: 3.872, duration: 146 },
-      ],
+      type: "car",
+      emission: 22.99,
+      duration: 84,
+    },
+    {
+      c: ["E", "Ka"],
+      type: "train",
+      emission: 3.872,
+      duration: 146,
     },
     {
       c: ["L", "Ka"],
-      costs: [
-        {
-          type: "car",
-          emission: 39.52,
-          duration: 144,
-        },
-        { type: "train", emission: 6.656, duration: 196 },
-      ],
+      type: "car",
+      emission: 39.52,
+      duration: 144,
+    },
+    {
+      c: ["L", "Ka"],
+      type: "train",
+      emission: 6.656,
+      duration: 196,
     },
     {
       c: ["G", "Ka"],
-      costs: [
-        {
-          type: "car",
-          emission: 11.875,
-          duration: 59,
-        },
-        { type: "train", emission: 2, duration: 42 },
-      ],
+      type: "car",
+      emission: 11.875,
+      duration: 59,
+    },
+    {
+      c: ["G", "Ka"],
+      type: "train",
+      emission: 2,
+      duration: 42,
     },
     {
       c: ["G", "K"],
-      costs: [
-        {
-          type: "car",
-          emission: 26.41,
-          duration: 102,
-        },
-        { type: "train", emission: 4.448, duration: 120 },
-      ],
+      type: "car",
+      emission: 26.41,
+      duration: 102,
+    },
+    {
+      c: ["G", "K"],
+      type: "train",
+      emission: 4.448,
+      duration: 120,
     },
     {
       c: ["V", "K"],
-      costs: [
-        {
-          type: "car",
-          emission: 7.505,
-          duration: 43,
-        },
-        { type: "train", emission: 1.264, duration: 37 },
-      ],
+      type: "car",
+      emission: 7.505,
+      duration: 43,
+    },
+    {
+      c: ["V", "K"],
+      type: "train",
+      emission: 1.264,
+      duration: 37,
     },
     {
       c: ["V", "S"],
-      costs: [
-        {
-          type: "car",
-          emission: 36.67,
-          duration: 132,
-        },
-        { type: "train", emission: 6.176, duration: 187 },
-      ],
+      type: "car",
+      emission: 36.67,
+      duration: 132,
+    },
+    {
+      c: ["V", "S"],
+      type: "train",
+      emission: 6.176,
+      duration: 187,
     },
     {
       c: ["V", "I"],
-      costs: [
-        {
-          type: "car",
-          emission: 56.24,
-          duration: 256,
-        },
-        { type: "train", emission: 9.472, duration: 264 },
-      ],
+      type: "car",
+      emission: 56.24,
+      duration: 256,
+    },
+    {
+      c: ["V", "I"],
+      type: "train",
+      emission: 9.472,
+      duration: 264,
     },
     {
       c: ["S", "I"],
-      costs: [
-        {
-          type: "car",
-          emission: 31.16,
-          duration: 143,
-        },
-        { type: "train", emission: 5.248, duration: 108 },
-      ],
+      type: "car",
+      emission: 31.16,
+      duration: 143,
+    },
+    {
+      c: ["S", "I"],
+      type: "train",
+      emission: 5.248,
+      duration: 108,
     },
     {
       c: ["S", "L"],
-      costs: [
-        {
-          type: "car",
-          emission: 31.16,
-          duration: 143,
-        },
-        { type: "train", emission: 5.248, duration: 66 },
-      ],
+      type: "car",
+      emission: 31.16,
+      duration: 143,
+    },
+    {
+      c: ["S", "L"],
+      type: "train",
+      emission: 5.248,
+      duration: 66,
     },
     {
       c: ["I", "B"],
-      costs: [
-        {
-          type: "car",
-          emission: 38.76,
-          duration: 178,
-        },
-        { type: "train", emission: 6.528, duration: 150 },
-      ],
+      type: "car",
+      emission: 38.76,
+      duration: 178,
+    },
+    {
+      c: ["I", "B"],
+      type: "train",
+      emission: 6.528,
+      duration: 150,
     },
   ],
 };

@@ -12,32 +12,27 @@ const vm = new Vue({
     selectedRoute() {
       return this.findRoute();
     },
-    co2Vergleich() {
-      return (
-        this.selectedRoute.costs[0].emission /
-        this.selectedRoute.costs[1].emission
-      ).toFixed(2);
-    },
-    dauerVergleich() {
-      return (
-        this.selectedRoute.costs[0].duration /
-        this.selectedRoute.costs[1].duration
-      ).toFixed(2);
-    },
+    // co2Vergleich() {
+    //   return (
+    //     this.selectedRoute.costs[0].emission /
+    //     this.selectedRoute.costs[1].emission
+    //   ).toFixed(2);
+    // },
+    // dauerVergleich() {
+    //   return (
+    //     this.selectedRoute.costs[0].duration /
+    //     this.selectedRoute.costs[1].duration
+    //   ).toFixed(2);
+    // },
   },
   methods: {
     findRoute() {
-      // console.log(this.selectedCities);
-      // console.log(
-      //   this.routes.filter((e) =>
-      //     e.c.includes(this.selectedCities.find((e) => e.isStart == true).id)
-      //   )
-      // );
-      return this.routes.find(
+      let route = this.routes.filter(
         (e) =>
           e.c.includes(this.selectedCities[0].id) &&
           e.c.includes(this.selectedCities[1].id)
       );
+      return route;
     },
     selectCity(id) {
       // Methode um Städte auszuwählen
@@ -93,7 +88,6 @@ const vm = new Vue({
       // console.log(this.selectedCities);
     },
     westlichsteSelectedCity() {
-      this.selectedCities[0].isStart = true;
       if (this.selectedCities.length != 2) return;
       if (this.selectedCities[0].coord.lon > this.selectedCities[1].coord.lon) {
         const h = this.selectedCities[0];
@@ -101,29 +95,36 @@ const vm = new Vue({
         this.selectedCities[1] = h;
       }
     },
-    createRoutes() {
-      return this.routes.filter((e) => e.c.includes(this.selectedCities[0]));
-    },
   },
   created() {},
 });
 
 class Walker {
-  constructor(start, routes, emission, duration) {
-    this.route = routes;
+  constructor(startId, routes, emission, duration, end, visited) {
+    this.routes = routes;
     this.emission = emission;
     this.duration = duration;
-    this.start = start;
+    this.startId = startId;
+    this.end = end;
+    this.visited = visited;
   }
 
-  useRoute(route) {
-    let walkers = vm.createRoutes();
-    while(walker in walkers){
-      
-    }
+  useRoute(comingFrom, route) {
+    this.visited.push(comingFrom);
+    this.routes.push(route);
+    // this.emission += route.
+    // let walkers = vm.routes.filter((e) => e.c.includes(this.startId));
+    // if (walkers.find((e) => e.c.includes)) while (walker in walkers) {}
   }
 
   createDeepCopy() {
-    return new Walker(this.start, this.routes, this.emission, this.duration);
+    return new Walker(
+      this.startId,
+      [...this.routes],
+      this.emission,
+      this.duration,
+      this.end,
+      [...this.v]
+    );
   }
 }

@@ -60,13 +60,13 @@
         <h3 class="text-center">Routen</h3>
         <span v-if="selectedCities.length == 2">
           <span class="text-center"><span class="mdi mdi-car-outline"></span> C02-Austoß:
-            {{selectedRoute.costs[0].emission}} Dauer:
-            {{selectedRoute.costs[0].duration}}Min</span><br />
+            {{selectedRoute[0].emission}} Dauer:
+            {{selectedRoute[0].duration}}Min</span><br />
           <span class="text-center"><span class="mdi mdi-train"></span> C02-Austoß:
-            {{selectedRoute.costs[1].emission}} Dauer:
-            {{selectedRoute.costs[1].duration}}Min</span><br>
-          <span>C02-Austoß von <span class="mdi mdi-car-outline"></span> : {{co2Vergleich}} mal höher als von <span class="mdi mdi-train"/></span><br> <!--Rechnung: (Auto-Emission/Zug-Emission)-->
-          <span>Dauer von <span class="mdi mdi-car-outline"></span>: {{dauerVergleich}} mal länger als <span class="mdi mdi-train"></span></span> <!--Rechnung: (Auto-Dauer/Zug-Dauer)-->
+            {{selectedRoute[1].emission}} Dauer:
+            {{selectedRoute[1].duration}}Min</span><br>
+          <!-- <span>C02-Austoß von <span class="mdi mdi-car-outline"></span> : {{co2Vergleich}} mal höher als von <span class="mdi mdi-train"/></span><br> Rechnung: (Auto-Emission/Zug-Emission) -->
+          <!-- <span>Dauer von <span class="mdi mdi-car-outline"></span>: {{dauerVergleich}} mal länger als <span class="mdi mdi-train"></span></span> Rechnung: (Auto-Dauer/Zug-Dauer) -->
         </span>
       </div>
       <div class="col-3">
