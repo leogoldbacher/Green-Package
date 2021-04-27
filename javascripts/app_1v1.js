@@ -27,6 +27,12 @@ const vm = new Vue({
   },
   methods: {
     findRoute() {
+      // console.log(this.selectedCities);
+      // console.log(
+      //   this.routes.filter((e) =>
+      //     e.c.includes(this.selectedCities.find((e) => e.isStart == true).id)
+      //   )
+      // );
       return this.routes.find(
         (e) =>
           e.c.includes(this.selectedCities[0].id) &&
@@ -87,6 +93,7 @@ const vm = new Vue({
       // console.log(this.selectedCities);
     },
     westlichsteSelectedCity() {
+      this.selectedCities[0].isStart = true;
       if (this.selectedCities.length != 2) return;
       if (this.selectedCities[0].coord.lon > this.selectedCities[1].coord.lon) {
         const h = this.selectedCities[0];
@@ -94,6 +101,29 @@ const vm = new Vue({
         this.selectedCities[1] = h;
       }
     },
+    createRoutes() {
+      return this.routes.filter((e) => e.c.includes(this.selectedCities[0]));
+    },
   },
   created() {},
 });
+
+class Walker {
+  constructor(start, routes, emission, duration) {
+    this.route = routes;
+    this.emission = emission;
+    this.duration = duration;
+    this.start = start;
+  }
+
+  useRoute(route) {
+    let walkers = vm.createRoutes();
+    while(walker in walkers){
+      
+    }
+  }
+
+  createDeepCopy() {
+    return new Walker(this.start, this.routes, this.emission, this.duration);
+  }
+}
