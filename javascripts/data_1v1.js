@@ -1,4 +1,4 @@
-const data = {  
+const data = {
   cities: [
     {
       id: "W",
@@ -152,7 +152,7 @@ const data = {
       c: ["L", "W"],
       type: "train",
       emission: 5.88,
-      duration: 740,
+      duration: 74,
     },
     {
       c: ["E", "W"],

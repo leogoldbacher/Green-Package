@@ -1,4 +1,4 @@
-// data is loaded in index_1v1.html
+// data is loaded in index_1v1.h
 const vm = new Vue({
   el: "#app",
   data: {
@@ -7,7 +7,7 @@ const vm = new Vue({
     cities: data.cities,
     selectedCities: [],
     lines: [],
-    genRoutes: []
+    genRoutes: [],
   },
   computed: {
     selectedRoute() {
@@ -33,6 +33,7 @@ const vm = new Vue({
       return route;
     },
     selectCity(id) {
+      console.log();
       // Methode um Städte auszuwählen
       let city = this.cities.find((e) => e.id == id);
       if (city.isSelected == false) {
@@ -94,6 +95,7 @@ const vm = new Vue({
       }
     },
   },
-  created() {},
+  created() {
+    console.log(this.genRoutes.length);
+  },
 });
-

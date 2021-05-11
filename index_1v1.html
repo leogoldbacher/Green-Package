@@ -1,10 +1,10 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Green</title>
+  <title>Green Package</title>
 
   <script src="./javascripts/vue.min.js"></script>
 
@@ -15,7 +15,9 @@
 
 <body>
   <div id="app" class="container">
-    <h1>{{title}}</h1>
+    <div class="text-center mt-2 mb-1">
+      <h1>{{title}}</h1>
+    </div>
     <!--
               x:
                 lon 9.9281826,
@@ -27,26 +29,26 @@
                 height: 3
       
              -->
-
-    <svg viewBox="0 0 297 210" style="height: 70vh">
-      <g transform="scale(1,1.1)">
-        <image x="0" y="0" width="297" height="210" href="./images/ÖsterreichSelbst_v2_clean.svg" />
-        <g transform="translate(0,-87)">
-          <g v-for="c of cities">
-            <circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-on:dblclick="doubleClick(c.id)"
-              v-if="c.isSelected == false" />
-            <circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)" v-if="c.isSelected" />
-            <text :x="c.coord.x-10" :y="c.coord.y-3 " style="font-size: 5">
-              {{c.name}}
-            </text>
-          </g>
-          <g>
-            <line v-for="l of lines" :x1="l.x1" :x2="l.x2" :y1="l.y1" :y2="l.y2" stroke="black"></line>
+    <div class="text-center mx-auto">
+      <svg viewBox="0 0 297 210" style="height: 70vh">
+        <g transform="scale(1,1.1)">
+          <image class="img-fluid max-width: 100%; height: auto;" x="0" y="0" width="297" height="210" href="./images/ÖsterreichSelbst_v2_clean.svg" />
+          <g transform="translate(0,-87)">
+            <g v-for="c of cities">
+              <circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-on:dblclick="doubleClick(c.id)" v-if="c.isSelected == false" />
+              <circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)" v-if="c.isSelected" />
+              <text :x="c.coord.x-11" :y="c.coord.y-3 " style="font-size: 5">
+                {{c.name}}
+              </text>
+            </g>
+            <g>
+              <line v-for="l of lines" :x1="l.x1" :x2="l.x2" :y1="l.y1" :y2="l.y2" stroke="black"></line>
+            </g>
           </g>
         </g>
-      </g>
-    </svg>
-    <div class="row">
+      </svg>
+    </div>
+    <div class="row mb-2">
       <div class="col-3">
         <h3 class="text-center">Stadt 1</h3>
         <span v-if="selectedCities[0] != null">
@@ -56,7 +58,7 @@
           <span class="text-center"><a :href="selectedCities[0].link">{{selectedCities[0].link}}</a></span>
         </span>
       </div>
-      <div class="col-6">
+      <div class="col-6 mb-2">
         <h3 class="text-center">Routen</h3>
         <span v-if="selectedCities.length == 2">
           <span class="text-center"><span class="mdi mdi-car-outline"></span> C02-Austoß:
@@ -69,11 +71,11 @@
           <!-- <span>Dauer von <span class="mdi mdi-car-outline"></span>: {{dauerVergleich}} mal länger als <span class="mdi mdi-train"></span></span> Rechnung: (Auto-Dauer/Zug-Dauer) -->
         </span>
       </div>
-      <div class="col-3">
+      <div class="col-3 mb-2">
         <h3 class="text-center">Stadt 2</h3>
         <span v-if="selectedCities[1] != null">
-          <span class="text-center"><a :href="selectedCities[1].link">{{selectedCities[1].name}}<img
-                :src="selectedCities[1].wappen" style="height: 5vh" /></a></span><br />
+          <span class="text-center"><a :href="selectedCities[1].link">{{selectedCities[1].name}}<img :src="selectedCities[1].wappen"
+                style="height: 5vh" /></a></span><br />
           <span class="text-center">
             <a :href="selectedCities[1].link">{{selectedCities[1].link}}</a></span>
         </span>
