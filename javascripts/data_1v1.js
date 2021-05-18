@@ -146,13 +146,13 @@ const data = {
       c: ["L", "W"],
       type: "car",
       emission: 34.96,
-      duration: 128,
+      duration: 1280,
     },
     {
       c: ["L", "W"],
       type: "train",
       emission: 5.88,
-      duration: 74,
+      duration: 740,
     },
     {
       c: ["E", "W"],

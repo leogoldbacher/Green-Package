@@ -42,7 +42,8 @@
               </text>
             </g>
             <g>
-              <line v-for="l of lines" :x1="l.x1" :x2="l.x2" :y1="l.y1" :y2="l.y2" stroke="black"></line>
+              <line v-for="l of durationLines" :x1="l.x1" :x2="l.x2" :y1="l.y1" :y2="l.y2" stroke="black"></line>
+              <line v-for="l of emissionLines" :x1="l.x1" :x2="l.x2" :y1="l.y1" :y2="l.y2" stroke="green"></line>
             </g>
           </g>
         </g>
@@ -61,12 +62,14 @@
       <div class="col-6 mb-2">
         <h3 class="text-center">Routen</h3>
         <span v-if="selectedCities.length == 2">
+          Schnellste Route:
           <span class="text-center"><span class="mdi mdi-car-outline"></span> C02-Austoß:
-            {{selectedRoute[0].emission}} Dauer:
-            {{selectedRoute[0].duration}}Min</span><br />
+            {{lowestTime.emission}} Dauer:
+            {{lowestTime.duration}}Min</span><br />
+            Umweltfreundlichste Route:
           <span class="text-center"><span class="mdi mdi-train"></span> C02-Austoß:
-            {{selectedRoute[1].emission}} Dauer:
-            {{selectedRoute[1].duration}}Min</span><br>
+            {{lowestems.emission}} Dauer:
+            {{lowestems.duration}}Min</span><br>
           <!-- <span>C02-Austoß von <span class="mdi mdi-car-outline"></span> : {{co2Vergleich}} mal höher als von <span class="mdi mdi-train"/></span><br> Rechnung: (Auto-Emission/Zug-Emission) -->
           <!-- <span>Dauer von <span class="mdi mdi-car-outline"></span>: {{dauerVergleich}} mal länger als <span class="mdi mdi-train"></span></span> Rechnung: (Auto-Dauer/Zug-Dauer) -->
         </span>

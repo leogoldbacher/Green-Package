@@ -1,11 +1,11 @@
 let data = require("./alg_data.js");
 
 class Walker {
-  constructor(startId, routes, em, d, visited, end) {
+  constructor(startId, routes, emission, duration, visited, end) {
     this.startId = startId;
     this.routes = routes;
-    this.em = em;
-    this.d = d;
+    this.emission = emission;
+    this.duration = duration;
     this.visited = visited;
     this.end = end;
   }
@@ -13,8 +13,8 @@ class Walker {
   useRoute(comingFrom, goingTo, route) {
     this.visited.push(comingFrom);
     this.routes.push(route);
-    this.em += route.em;
-    this.d += route.d;
+    this.emission += route.emission;
+    this.duration += route.duration;
     this.end = goingTo;
   }
 
@@ -22,8 +22,8 @@ class Walker {
     return new Walker(
       this.startId,
       [...this.routes],
-      this.em,
-      this.d,
+      this.emission,
+      this.duration,
       [...this.visited],
       this.end
     );
@@ -39,17 +39,14 @@ function generateRoutes() {
       const toCityId = r.c[0] == curCityId ? r.c[1] : r.c[0];
       if (
         !genRoutes.find(
-          (e) =>
-            e.s == curCityId &&
-            e.e == toCityId &&
-            e.type == r.type
+          (e) => e.s == curCityId && e.e == toCityId && e.type == r.type
         )
       ) {
         genRoutes.push({
           s: curCityId,
           e: toCityId,
-          d: r.d,
-          em: r.em,
+          duration: r.duration,
+          emission: r.emission,
           routes: [r],
         });
         let walker = new Walker(curCityId, [], 0, 0, [], undefined);
@@ -75,8 +72,8 @@ function generateRoutes() {
         genRoutes.push({
           s: curWalker.startId,
           e: toCityId,
-          d: newWalker.d,
-          em: newWalker.em,
+          duration: newWalker.duration,
+          emission: newWalker.emission,
           routes: [...newWalker.routes],
         });
         if (genRoutes.length < 60000) {
@@ -94,25 +91,26 @@ const fs = require("fs");
 fs.writeFileSync("./genRoutes.json", JSON.stringify(genRoutes));
 // let genRoutes= JSON.parse(fs.readFileSync("./genRoutes.json"));
 console.log(genRoutes.length);
-let foundRoutes = genRoutes.filter(
-  (e) => e.s == "W" && e.e == "B"
-);
+let foundRoutes = genRoutes.filter((e) => e.s == "W" && e.e == "B");
 console.log(foundRoutes.length);
 let lowestTime = foundRoutes[0];
 let lowestems = foundRoutes[0];
 for (f of foundRoutes) {
-  if (f.d < lowestTime.d) {
+  if (f.duration < lowestTime.duration) {
     lowestTime = f;
   }
-  if (f.em < lowestems.em) {
+  if (f.emission < lowestems.emission) {
     lowestems = f;
   }
 }
-console.log(JSON.stringify(lowestTime));
-console.log(JSON.stringify(lowestems));
-console.log(
-  lowestems.routes.reduce((sum, cur) => (sum += cur.em), 0)
-);
+// console.log(lowestTime);
+// console.log(lowestems);
+// console.log("");
+// console.log(lowestems.routes);
+console.log(lowestTime.routes);
+// console.log(JSON.stringify(lowestTime));
+// console.log(JSON.stringify(lowestems));
+// console.log(lowestems.routes.reduce((sum, cur) => (sum += cur.emission), 0));
 let x = foundRoutes.filter(
   (e) =>
     e.routes[0].c[1] == "W" &&
@@ -124,9 +122,9 @@ let x = foundRoutes.filter(
 function convertRoutes(r) {
   let ret = "";
   for (r of r.routes) {
-    ret += `c: ${r.c[0]}, ${r.c[1]} type: ${r.type} em: ${r.em} \n`;
+    ret += `c: ${r.c[0]}, ${r.c[1]} type: ${r.type} emission: ${r.emission} \n`;
   }
   return ret;
 }
-let routesFrom = data.routes.filter((e) => e.c.includes("W"));
-console.log(routesFrom);
+// let routesFrom = data.routes.filter((e) => e.c.includes("W"));
+// console.log(routesFrom);
