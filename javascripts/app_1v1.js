@@ -67,10 +67,10 @@ const vm = new Vue({
     //   );
     //   return route;
     // },
-    selectCity(id) {
-      console.log();
+    selectCity(c) {
+      // console.log();
       // Methode um Städte auszuwählen
-      let city = this.cities.find((e) => e.id == id);
+      let city = this.cities.find((e) => e.id == c.id);
       if (city.isSelected == false) {
         city.isSelected = true;
         if (this.selectedCities.length == 2) {
@@ -80,7 +80,7 @@ const vm = new Vue({
         }
       } else {
         city.isSelected = false;
-        this.selectedCities = this.selectedCities.filter((e) => e.id != id);
+        this.selectedCities = this.selectedCities.filter((e) => e.id != c.id);
         this.durationLines = [];
         this.emissionLines = [];
       }
@@ -95,14 +95,14 @@ const vm = new Vue({
       const c1 = cs.coord;
       const c2 = ce.coord;
       this.emissionLines.push({ x1: c1.x, y1: c1.y, x2: c2.x, y2: c2.y });
-      console.log(this.emissionLines);
+      // console.log(this.emissionLines);
     },
 
     drawRouteDuration(cs, ce) {
       const c1 = cs.coord;
       const c2 = ce.coord;
       this.durationLines.push({ x1: c1.x, y1: c1.y, x2: c2.x, y2: c2.y });
-      console.log(this.durationLines);
+      // console.log(this.durationLines);
     },
 
     doubleClick(id) {
@@ -189,7 +189,7 @@ const vm = new Vue({
         (e) =>
           e.s == this.selectedCities[0].id && e.e == this.selectedCities[1].id
       );
-      // console.log(foundRoutes[0]);
+      console.log(foundRoutes[0]);
       this.lowestTime = foundRoutes[0];
       this.lowestems = foundRoutes[0];
       for (f of foundRoutes) {
@@ -200,12 +200,6 @@ const vm = new Vue({
           this.lowestems = f;
         }
       }
-      this.lowestTime.duration = this.lowestTime.duration.toFixed(2);
-      this.lowestTime.emission = this.lowestTime.emission.toFixed(2);
-      this.lowestems.emission = this.lowestems.emission.toFixed(2);
-      this.lowestems.duration = this.lowestems.duration.toFixed(2);
-      console.log(this.lowestems);
-      console.log(this.lowestTime);
       for (let r of this.lowestTime.routes) {
         let c1 = this.cities.find((e) => e.id == r.c[0]);
         let c2 = this.cities.find((e) => e.id == r.c[1]);

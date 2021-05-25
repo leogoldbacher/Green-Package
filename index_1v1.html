@@ -128,8 +128,8 @@
           <image class="img-fluid max-width: 100%; height: auto;" x="0" y="0" width="297" height="210" href="./images/ÖsterreichSelbst_v2_clean.svg" />
           <g transform="translate(0,-87)">
             <g v-for="c of cities">
-              <circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c.id)" v-on:dblclick="doubleClick(c.id)" v-if="c.isSelected == false" />
-              <circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c.id)" v-if="c.isSelected" />
+              <circle :cx="c.coord.x" :cy="c.coord.y " r="2" @click="selectCity(c)" v-on:dblclick="doubleClick(c)" v-if="c.isSelected == false" />
+              <circle :cx="c.coord.x" :cy="c.coord.y " fill="red" r="2" @click="selectCity(c)" v-if="c.isSelected" />
               <text :x="c.coord.x-11" :y="c.coord.y-3 " style="font-size: 5">
                 {{c.name}}
               </text>
@@ -157,12 +157,12 @@
         <span v-if="selectedCities.length == 2">
           Schnellste Route:
           <span class="text-center"><span class="mdi mdi-car-outline"></span> C02-Austoß:
-            {{lowestTime.emission}} Dauer:
-            {{lowestTime.duration}}Min</span><br />
+            {{lowestTime.emission.toFixed(2)}} Dauer:
+            {{lowestTime.duration.toFixed(2)}}Min</span><br />
             Umweltfreundlichste Route:
           <span class="text-center"><span class="mdi mdi-train"></span> C02-Austoß:
-            {{lowestems.emission}} Dauer:
-            {{lowestems.duration}}Min</span><br>
+            {{lowestems.emission.toFixed(2)}} Dauer:
+            {{lowestems.duration.toFixed(2)}}Min</span><br>
           <!-- <span>C02-Austoß von <span class="mdi mdi-car-outline"></span> : {{co2Vergleich}} mal höher als von <span class="mdi mdi-train"/></span><br> Rechnung: (Auto-Emission/Zug-Emission) -->
           <!-- <span>Dauer von <span class="mdi mdi-car-outline"></span>: {{dauerVergleich}} mal länger als <span class="mdi mdi-train"></span></span> Rechnung: (Auto-Dauer/Zug-Dauer) -->
         </span>

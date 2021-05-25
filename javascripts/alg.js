@@ -91,7 +91,7 @@ const fs = require("fs");
 fs.writeFileSync("./genRoutes.json", JSON.stringify(genRoutes));
 // let genRoutes= JSON.parse(fs.readFileSync("./genRoutes.json"));
 console.log(genRoutes.length);
-let foundRoutes = genRoutes.filter((e) => e.s == "W" && e.e == "B");
+let foundRoutes = genRoutes.filter((e) => e.s == "W" && e.e == "Sch");
 console.log(foundRoutes.length);
 let lowestTime = foundRoutes[0];
 let lowestems = foundRoutes[0];
@@ -111,12 +111,12 @@ console.log(lowestTime.routes);
 // console.log(JSON.stringify(lowestTime));
 // console.log(JSON.stringify(lowestems));
 // console.log(lowestems.routes.reduce((sum, cur) => (sum += cur.emission), 0));
-let x = foundRoutes.filter(
-  (e) =>
-    e.routes[0].c[1] == "W" &&
-    e.routes[0].c[0] == "L" &&
-    e.routes[0].type == "train"
-);
+// let x = foundRoutes.filter(
+//   (e) =>
+//     e.routes[0].c[1] == "W" &&
+//     e.routes[0].c[0] == "L" &&
+//     e.routes[0].type == "train"
+// );
 // console.log( convertRoutes(x[0]));
 
 function convertRoutes(r) {
