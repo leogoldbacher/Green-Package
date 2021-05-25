@@ -77,12 +77,12 @@ const vm = new Vue({
           city.isSelected = false;
         } else if (this.selectedCities.length < 2) {
           this.selectedCities.push(city);
-          this.durationLines = [];
-          this.emissionLines = [];
         }
       } else {
         city.isSelected = false;
         this.selectedCities = this.selectedCities.filter((e) => e.id != id);
+        this.durationLines = [];
+        this.emissionLines = [];
       }
       if (this.selectedCities.length == 2) {
         this.findRoutes();
@@ -200,6 +200,10 @@ const vm = new Vue({
           this.lowestems = f;
         }
       }
+      this.lowestTime.duration = this.lowestTime.duration.toFixed(2);
+      this.lowestTime.emission = this.lowestTime.emission.toFixed(2);
+      this.lowestems.emission = this.lowestems.emission.toFixed(2);
+      this.lowestems.duration = this.lowestems.duration.toFixed(2);
       console.log(this.lowestems);
       console.log(this.lowestTime);
       for (let r of this.lowestTime.routes) {
