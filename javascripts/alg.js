@@ -89,25 +89,52 @@ function generateRoutes() {
 let genRoutes = generateRoutes();
 const fs = require("fs");
 fs.writeFileSync("./genRoutes.json", JSON.stringify(genRoutes));
-// let genRoutes= JSON.parse(fs.readFileSync("./genRoutes.json"));
+// let genRoutes = JSON.parse(fs.readFileSync("./genRoutes.json"));
 console.log(genRoutes.length);
-let foundRoutes = genRoutes.filter((e) => e.s == "W" && e.e == "Sch");
-console.log(foundRoutes.length);
-let lowestTime = foundRoutes[0];
-let lowestems = foundRoutes[0];
-for (f of foundRoutes) {
-  if (f.duration < lowestTime.duration) {
-    lowestTime = f;
+let finalRoutes = [];
+let foundRoutes = [];
+for (let d = 0; d < data.cities.length; d++) {
+  let startCity = data.cities[d];
+  for (let c = d + 1; c < data.cities.length; c++) {
+    foundRoutes.push(
+      genRoutes.filter((e) => e.s == startCity.id && e.e == data.cities[c].id)
+    );
   }
-  if (f.emission < lowestems.emission) {
-    lowestems = f;
+  let lowestTime = foundRoutes[0];
+  let lowestems = foundRoutes[0];
+  for (f of foundRoutes) {
+    if (f.duration < lowestTime.duration) {
+      lowestTime = f;
+    }
+    if (f.emission < lowestems.emission) {
+      lowestems = f;
+    }
   }
+  finalRoutes.push({
+    lowTime: lowestTime,
+    lowEms: lowestems,
+    // c: [lowestTime.startCityId, lowestTime.endCityId],
+  });
 }
+// let foundRoutes = genRoutes.filter((e) => e.s == "W" && e.e == "Sch");
+// console.log(foundRoutes.length);
+console.log("ha:");
+console.log(finalRoutes[0]);
+// let lowestTime = foundRoutes[0];
+// let lowestems = foundRoutes[0];
+// for (f of foundRoutes) {
+//   if (f.duration < lowestTime.duration) {
+//     lowestTime = f;
+//   }
+//   if (f.emission < lowestems.emission) {
+//     lowestems = f;
+//   }
+// }
 // console.log(lowestTime);
 // console.log(lowestems);
 // console.log("");
 // console.log(lowestems.routes);
-console.log(lowestTime.routes);
+// console.log(lowestTime.routes);
 // console.log(JSON.stringify(lowestTime));
 // console.log(JSON.stringify(lowestems));
 // console.log(lowestems.routes.reduce((sum, cur) => (sum += cur.emission), 0));

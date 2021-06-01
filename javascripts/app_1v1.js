@@ -1,35 +1,35 @@
 // data is loaded in index_1v1.h
 // let allRoutes = require("./genRoutes.js");
 
-class Walker {
-  constructor(startId, routes, emission, duration, visited, end) {
-    this.startId = startId;
-    this.routes = routes;
-    this.emission = emission;
-    this.duration = duration;
-    this.visited = visited;
-    this.end = end;
-  }
+// class Walker {
+//   constructor(startId, routes, emission, duration, visited, end) {
+//     this.startId = startId;
+//     this.routes = routes;
+//     this.emission = emission;
+//     this.duration = duration;
+//     this.visited = visited;
+//     this.end = end;
+//   }
 
-  useRoute(comingFrom, goingTo, route) {
-    this.visited.push(comingFrom);
-    this.routes.push(route);
-    this.emission += route.emission;
-    this.duration += route.duration;
-    this.end = goingTo;
-  }
+//   useRoute(comingFrom, goingTo, route) {
+//     this.visited.push(comingFrom);
+//     this.routes.push(route);
+//     this.emission += route.emission;
+//     this.duration += route.duration;
+//     this.end = goingTo;
+//   }
 
-  createDeepCopy() {
-    return new Walker(
-      this.startId,
-      [...this.routes],
-      this.emission,
-      this.duration,
-      [...this.visited],
-      this.end
-    );
-  }
-}
+//   createDeepCopy() {
+//     return new Walker(
+//       this.startId,
+//       [...this.routes],
+//       this.emission,
+//       this.duration,
+//       [...this.visited],
+//       this.end
+//     );
+//   }
+// }
 
 const vm = new Vue({
   el: "#app",
@@ -43,6 +43,7 @@ const vm = new Vue({
     lowestTime: 0,
     lowestems: 0,
     genRoutes: [],
+    routen: allRoutes,
   },
   computed: {
     // selectedRoute() {
@@ -127,69 +128,76 @@ const vm = new Vue({
         this.selectedCities[1] = h;
       }
     },
-    generateRoutes() {
-      let waitingWalkers = [];
-      let genRoutes = [];
-      for (let currentCity of data.cities) {
-        let curCityId = currentCity.id;
-        let routesFrom = data.routes.filter((e) => e.c.includes(curCityId));
-        for (let r of routesFrom) {
-          const toCityId = r.c[0] == curCityId ? r.c[1] : r.c[0];
-          if (
-            !genRoutes.find(
-              (e) => e.s == curCityId && e.e == toCityId && e.type == r.type
-            )
-          ) {
-            genRoutes.push({
-              s: curCityId,
-              e: toCityId,
-              duration: r.duration,
-              emission: r.emission,
-              routes: [r],
-            });
-            let walker = new Walker(curCityId, [], 0, 0, [], undefined);
-            walker.useRoute(curCityId, toCityId, r);
-            waitingWalkers.push(walker);
-          } else {
-            // console.log("skip route");
-          }
-        }
-      }
+    // generateRoutes() {
+    //   let waitingWalkers = [];
+    //   let genRoutes = [];
+    //   for (let currentCity of data.cities) {
+    //     let curCityId = currentCity.id;
+    //     let routesFrom = data.routes.filter((e) => e.c.includes(curCityId));
+    //     for (let r of routesFrom) {
+    //       const toCityId = r.c[0] == curCityId ? r.c[1] : r.c[0];
+    //       if (
+    //         !genRoutes.find(
+    //           (e) => e.s == curCityId && e.e == toCityId && e.type == r.type
+    //         )
+    //       ) {
+    //         genRoutes.push({
+    //           s: curCityId,
+    //           e: toCityId,
+    //           duration: r.duration,
+    //           emission: r.emission,
+    //           routes: [r],
+    //         });
+    //         let walker = new Walker(curCityId, [], 0, 0, [], undefined);
+    //         walker.useRoute(curCityId, toCityId, r);
+    //         waitingWalkers.push(walker);
+    //       } else {
+    //         // console.log("skip route");
+    //       }
+    //     }
+    //   }
 
-      while (waitingWalkers.length > 0) {
-        // console.log(" waitingWalkers: " + waitingWalkers.length);
-        // console.log("genRoutes: " + genRoutes.length);
-        let curWalker = waitingWalkers.pop();
-        let routesFrom = data.routes.filter((e) => e.c.includes(curWalker.end));
-        let curCityId = curWalker.end;
-        for (let r of routesFrom) {
-          const toCityId = r.c[0] == curCityId ? r.c[1] : r.c[0];
-          if (!curWalker.visited.includes(toCityId)) {
-            let newWalker = curWalker.createDeepCopy();
-            newWalker.useRoute(curCityId, toCityId, r);
-            genRoutes.push({
-              s: curWalker.startId,
-              e: toCityId,
-              duration: newWalker.duration,
-              emission: newWalker.emission,
-              routes: [...newWalker.routes],
-            });
-            if (genRoutes.length < 60000) {
-              waitingWalkers.push(newWalker);
-            }
-          } else {
-            //   console.log("city visited stop walker");
-          }
-        }
-      }
-      return genRoutes;
-    },
+    //   while (waitingWalkers.length > 0) {
+    //     // console.log(" waitingWalkers: " + waitingWalkers.length);
+    //     // console.log("genRoutes: " + genRoutes.length);
+    //     let curWalker = waitingWalkers.pop();
+    //     let routesFrom = data.routes.filter((e) => e.c.includes(curWalker.end));
+    //     let curCityId = curWalker.end;
+    //     for (let r of routesFrom) {
+    //       const toCityId = r.c[0] == curCityId ? r.c[1] : r.c[0];
+    //       if (!curWalker.visited.includes(toCityId)) {
+    //         let newWalker = curWalker.createDeepCopy();
+    //         newWalker.useRoute(curCityId, toCityId, r);
+    //         genRoutes.push({
+    //           s: curWalker.startId,
+    //           e: toCityId,
+    //           duration: newWalker.duration,
+    //           emission: newWalker.emission,
+    //           routes: [...newWalker.routes],
+    //         });
+    //         if (genRoutes.length < 60000) {
+    //           waitingWalkers.push(newWalker);
+    //         }
+    //       } else {
+    //         //   console.log("city visited stop walker");
+    //       }
+    //     }
+    //   }
+    //   return genRoutes;
+    // },
     findRoutes() {
-      let foundRoutes = this.genRoutes.filter(
+      let foundRoutes = this.routen.filter(
         (e) =>
-          e.s == this.selectedCities[0].id && e.e == this.selectedCities[1].id
+          e.startCityId == this.selectedCities[0].id &&
+          e.endCityId == this.selectedCities[1].id
       );
-      console.log(foundRoutes[0]);
+      // if (foundRoutes[0] == undefined) {
+      //   foundRoutes = this.genRoutes.filter(
+      //     (e) =>
+      //       e.s == this.selectedCities[1].id && e.e == this.selectedCities[0].id
+      //   );
+      // }
+      console.log(foundRoutes.length);
       this.lowestTime = foundRoutes[0];
       this.lowestems = foundRoutes[0];
       for (f of foundRoutes) {
@@ -216,7 +224,7 @@ const vm = new Vue({
     },
   },
   created() {
-    this.genRoutes = this.generateRoutes();
+    // this.genRoutes = this.generateRoutes();
     // console.log(this.genRoutes.length);
     // console.log(allRoutes.length);
   },

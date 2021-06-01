@@ -154,7 +154,6 @@ const data = {
     //   link: "https://www.schladming.at/",
     //   wappen: "../images/wappen/schladming.png",
     // },
-    
   ],
   routes: [
     {
@@ -265,42 +264,42 @@ const data = {
       emission: 9.472,
       duration: 264,
     },
-    // {
-    //   c: ["S", "I"],
-    //   type: "car",
-    //   emission: 31.16,
-    //   duration: 143,
-    // },
-    // {
-    //   c: ["S", "I"],
-    //   type: "train",
-    //   emission: 5.248,
-    //   duration: 108,
-    // },
-    // {
-    //   c: ["S", "L"],
-    //   type: "car",
-    //   emission: 31.16,
-    //   duration: 143,
-    // },
-    // {
-    //   c: ["S", "L"],
-    //   type: "train",
-    //   emission: 5.248,
-    //   duration: 66,
-    // },
-    // {
-    //   c: ["I", "B"],
-    //   type: "car",
-    //   emission: 38.76,
-    //   duration: 178,
-    // },
-    // {
-    //   c: ["I", "B"],
-    //   type: "train",
-    //   emission: 6.528,
-    //   duration: 150,
-    // },
+    {
+      c: ["S", "I"],
+      type: "car",
+      emission: 31.16,
+      duration: 143,
+    },
+    {
+      c: ["S", "I"],
+      type: "train",
+      emission: 5.248,
+      duration: 108,
+    },
+    {
+      c: ["S", "L"],
+      type: "car",
+      emission: 31.16,
+      duration: 143,
+    },
+    {
+      c: ["S", "L"],
+      type: "train",
+      emission: 5.248,
+      duration: 66,
+    },
+    {
+      c: ["I", "B"],
+      type: "car",
+      emission: 38.76,
+      duration: 178,
+    },
+    {
+      c: ["I", "B"],
+      type: "train",
+      emission: 6.528,
+      duration: 150,
+    },
     // {
     //   c: ["Sch", "V"],
     //   type: "car",
